@@ -445,13 +445,20 @@ footer{border-top:1px solid var(--border);padding:44px 56px;display:flex;align-i
 <script src="data-edith.js"></script>
 <script src="data-helicarrier.js"></script>
 <script src="data-tie.js"></script>
-<script src="data-batwing.js"></script>
+<script src="data-batwing-1.js"></script>
+<script src="data-batwing-2.js"></script>
 <script src="data-dune-1.js"></script>
 <script src="data-dune-2.js"></script>
 <script src="data-dune-3.js"></script>
+<script src="data-dune-4.js"></script>
+<script src="data-dune-5.js"></script>
+<script src="data-dune-6.js"></script>
+<script src="data-dune-7.js"></script>
+<script src="data-dune-8.js"></script>
 <script src="data-media.js"></script>
 <script>
 var STL_DUNE = {Hull: (window.__DUNE_PARTS || []).join('')};
+var STL_BATWING = {Hull: (window.__BATWING_PARTS || []).join('')};
 
 var CRAFT = {
   edith: {
@@ -639,8 +646,7 @@ function openModal(id) {
   }
 
   // show/hide 3D tab
-  var stlLookup = {edith: STL_EDITH, redwing: STL_REDWING, helicarrier: STL_HELICARRIER, tie: STL_TIE, batwing: STL_BATWING, dune: STL_DUNE};
-  var has3d = !!stlLookup[c.stl];
+  var has3d = !!getSTL(c.stl);
   document.getElementById('tab-3d').style.display = has3d ? '' : 'none';
   stlPendingId = id;
 
@@ -709,9 +715,29 @@ function showSTLMessage(wrap, ctrls, innerHtml) {
   wrap.innerHTML = '<div class="stl-empty">'+innerHtml+'</div>';
   ctrls.innerHTML = '';
 }
+// Looks up a model's 3D data without ever throwing. If a data file failed to
+// load (missing upload, bad path, network error) the model simply has no 3D tab,
+// instead of the page erroring out and breaking every project card.
+function getSTL(id) {
+  try {
+    var all = {
+      edith: typeof STL_EDITH !== 'undefined' ? STL_EDITH : null,
+      redwing: typeof STL_REDWING !== 'undefined' ? STL_REDWING : null,
+      helicarrier: typeof STL_HELICARRIER !== 'undefined' ? STL_HELICARRIER : null,
+      tie: typeof STL_TIE !== 'undefined' ? STL_TIE : null,
+      batwing: typeof STL_BATWING !== 'undefined' ? STL_BATWING : null,
+      dune: typeof STL_DUNE !== 'undefined' ? STL_DUNE : null
+    };
+    var d = all[id];
+    if (!d) return null;
+    var keys = Object.keys(d);
+    if (!keys.length) return null;
+    for (var i = 0; i < keys.length; i++) { if (!d[keys[i]]) return null; }
+    return d;
+  } catch (e) { return null; }
+}
 function initSTLViewer(modalId) {
-  var stlLookup = {edith: STL_EDITH, redwing: STL_REDWING, helicarrier: STL_HELICARRIER, tie: STL_TIE, batwing: STL_BATWING, dune: STL_DUNE};
-  var stlData = stlLookup[modalId];
+  var stlData = getSTL(modalId);
   var wrap = document.getElementById('stl-viewer-wrap');
   var canvas = document.getElementById('stl-canvas');
   var ctrls = document.getElementById('stl-controls');
