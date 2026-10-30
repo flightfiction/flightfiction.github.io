@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flight Fiction</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo" onclick="goHome()">FLIGHT <span>FICTION</span></div>
+  <ul class="nav-links">
+    <li><a onclick="goHome();later('gallery-sec')">Gallery</a></li>
+    <li><a onclick="goHome();later('models-sec')">Models</a></li>
+    <li><a onclick="goHome();later('about-sec')">About</a></li>
+  </ul>
+  <button class="nav-cta" onclick="goHome();later('gallery-sec')">View Builds</button>
+</nav>
+
+<!-- HOME PAGE -->
+<div id="page-home" class="page active page-visible">
+
+<section id="hero">
+  <div class="hero-vdivs"></div>
+  <img class="hero-craft" src="assets/images/hero-edith-concept.jpg" alt="Stark EDITH Drone Concept">
+  <div class="hero-rule"></div>
+  <div class="hero-text">
+    <div class="hero-eye ha ha1">Real World Fictional Aircraft</div>
+    <h1 class="hero-h1 ha ha2">WHERE<br>IMPOSSIBLE<br><em>AIRCRAFT</em><br>LIVE</h1>
+    <p class="hero-sub ha ha3">Building fictional aircraft from pop culture, from 3D models to functional drones.</p>
+    <div class="hero-btns ha ha4">
+      <button class="btn-red" onclick="goHome();later('gallery-sec')">See the Builds</button>
+      <button class="btn-out" onclick="goHome();later('models-sec')">3D Models</button>
+    </div>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="t-track">
+    <span class="t-item">Stark EDITH Drone<span class="t-sep">&#9670;</span></span>
+    <span class="t-item">Flight Fiction Redwing<span class="t-sep">&#9670;</span></span>
+    <span class="t-item">Stark EDITH Drone<span class="t-sep">&#9670;</span></span>
+    <span class="t-item">Flight Fiction Redwing<span class="t-sep">&#9670;</span></span>
+    <span class="t-item">Stark EDITH Drone<span class="t-sep">&#9670;</span></span>
+    <span class="t-item">Flight Fiction Redwing<span class="t-sep">&#9670;</span></span>
+    <span class="t-item">Stark EDITH Drone<span class="t-sep">&#9670;</span></span>
+    <span class="t-item">Flight Fiction Redwing<span class="t-sep">&#9670;</span></span>
+  </div>
+</div>
+
+<section id="gallery-sec" style="background:var(--s1)">
+  <div class="wrap" style="padding-bottom:0">
+    <div class="sec-eye fu">01 &#8212; Blueprint Archive</div>
+    <h2 class="sec-h2 fu d1">Current Builds</h2>
+    <p class="sec-sub fu d2">Two aircraft in active development. Click any build to open the full engineering file with 3D model viewer.</p>
+  </div>
+  <div class="g-grid" style="margin:0">
+
+    <!-- STARK EDITH DRONE - full width featured -->
+    <div class="g-card g-card-full fu" onclick="openModal('edith')" style="display:grid;grid-template-columns:1fr 1fr;background:var(--bg);">
+      <div class="g-img" style="aspect-ratio:auto;min-height:320px;">
+        <div><img src="assets/images/edith-front.jpg" alt="Stark EDITH Drone front"></div>
+        <div><img src="assets/images/edith-side.jpg" alt="Stark EDITH Drone side"></div>
+        <div style="position:relative"><img src="assets/images/edith-angle.jpg" alt="Stark EDITH Drone angle"></div>
+      </div>
+      <div class="g-body" style="display:flex;flex-direction:column;justify-content:center;padding:48px 44px;">
+        <div class="g-tag"><span class="g-dot"></span>First Build &#8212; Spider-Man: Far From Home EDITH Drone</div>
+        <h3 class="g-name g-name-lg">STARK EDITH DRONE</h3>
+        <div class="g-uni">Flight Fiction &#8212; Inspired by Iron Man / MCU</div>
+        <p class="g-desc">This is a 3D-printed quadcopter with custom modelled armor shell designed and printed. The casing is styled after Tony Stark&#8217;s (Iron Man) Stark Industries combat EDITH drones.</p>
+        <div class="g-specs">
+          <div><div class="gs-l">Frame</div><div class="gs-v">3D Printed (PLA)</div></div>
+          <div><div class="gs-l">Shell</div><div class="gs-v">Custom Designed</div></div>
+          <div><div class="gs-l">Status</div><div class="gs-v" style="color:var(--red)">Complete</div></div>
+        </div>
+        <button class="g-btn">Open Full File + 3D Model</button>
+      </div>
+    </div>
+
+    <!-- FALCON'S REDWING DRONE -->
+    <div class="g-card g-card-full fu d2" onclick="openModal('redwing')" style="display:grid;grid-template-columns:1fr 1fr;background:var(--bg);border-top:1px solid var(--border);">
+      <div class="g-img g-img-single" style="aspect-ratio:auto;min-height:280px;">
+        <img src="assets/images/redwing.jpg" alt="Falcon’s Redwing Drone" style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+      <div class="g-body" style="display:flex;flex-direction:column;justify-content:center;padding:48px 44px;">
+        <div class="g-tag"><span class="g-dot"></span>Redwing &#8212; Captain America: Civil War</div>
+        <h3 class="g-name g-name-lg">FALCON’S REDWING DRONE</h3>
+        <div class="g-uni">Flight Fiction &#8212; Inspired by Falcon&#8217;s Redwing / MCU</div>
+        <p class="g-desc">This is a compact drone with 3D-printed body panels, PCB casing, tail, and wing structures. Every part is designed and printed from scratch and is inspired by Redwing from the Marvel Cinematic Universe (In the comics, Redwing is a bird!).</p>
+        <div class="g-specs">
+          <div><div class="gs-l">Body Parts</div><div class="gs-v">Nose, PCB, Tail, Wings</div></div>
+          <div><div class="gs-l">Material</div><div class="gs-v">3D Printed (PLA)</div></div>
+          <div><div class="gs-l">Design</div><div class="gs-v">Fully Custom CAD</div></div>
+          <div><div class="gs-l">Status</div><div class="gs-v" style="color:var(--red)">Complete</div></div>
+        </div>
+        <button class="g-btn">Open Full File + 3D Model</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="models-sec" style="background:var(--bg)">
+  <div class="wrap">
+    <div class="sec-eye fu">02 &#8212; 3D Reference Archive</div>
+    <h2 class="sec-h2 fu d1">Fictional Aircraft Models</h2>
+    <p class="sec-sub fu d2">Full 3D models built as CAD reference studies &#8212; not real hardware, but real geometry you can rotate, inspect, and study part by part. Four models so far.</p>
+  </div>
+  <div class="g-grid" style="margin:0">
+
+    <!-- DUNE ORNITHOPTER -->
+    <div class="g-card g-card-full fu" onclick="openModal('dune')" style="display:grid;grid-template-columns:1fr 1fr;background:var(--bg);">
+      <div class="g-img g-img-single" style="aspect-ratio:auto;min-height:320px;">
+        <img id="dune-card-img" src="assets/images/dune-ornithopter.jpg" alt="Dune Ornithopter reference model render" style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+      <div class="g-body">
+        <div class="g-tag" style="display:flex;align-items:center;gap:7px"><span style="width:7px;height:7px;background:var(--red);border-radius:50%;"></span>Fictional Model &#8212; Full 3D</div>
+        <h3 class="g-name">DUNE ORNITHOPTER</h3>
+        <div class="g-uni">Fictional Model &#8212; Inspired by Dune</div>
+        <p class="g-desc">A full single-piece 3D model of the Dune ornithopter &#8212; the insect-winged VTOL aircraft central to Arrakis travel. Open the file to rotate the ~673,200-triangle hull directly in the browser.</p>
+        <div class="g-specs">
+          <div><div class="gs-l">Category</div><div class="gs-v">Fictional Aircraft Model</div></div>
+          <div><div class="gs-l">Format</div><div class="gs-v">Single-Piece STL</div></div>
+          <div><div class="gs-l">Triangles</div><div class="gs-v">~673,200</div></div>
+          <div><div class="gs-l">Status</div><div class="gs-v">Model Complete</div></div>
+        </div>
+        <button class="g-btn">Open Full File + 3D Model</button>
+      </div>
+    </div>
+
+    <!-- SHIELD HELICARRIER -->
+    <div class="g-card g-card-full fu" onclick="openModal('helicarrier')" style="display:grid;grid-template-columns:1fr 1fr;background:var(--bg);">
+      <div class="g-img g-img-single" style="aspect-ratio:auto;min-height:320px;">
+        <img src="assets/images/helicarrier.png" alt="S.H.I.E.L.D. Helicarrier reference model, top-down render" style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+      <div class="g-body">
+        <div class="g-tag" style="display:flex;align-items:center;gap:7px"><span style="width:7px;height:7px;background:var(--red);border-radius:50%;"></span>Fictional Model &#8212; Full 3D</div>
+        <h3 class="g-name">S.H.I.E.L.D. HELICARRIER</h3>
+        <div class="g-uni">Fictional Model &#8212; Inspired by Marvel / MCU</div>
+        <p class="g-desc">A full single-piece 3D model of the S.H.I.E.L.D. Helicarrier. Open the file to rotate the ~90,600-triangle hull directly in the browser.</p>
+        <div class="g-specs">
+          <div><div class="gs-l">Category</div><div class="gs-v">Fictional Aircraft Model</div></div>
+          <div><div class="gs-l">Format</div><div class="gs-v">Single-Piece STL</div></div>
+          <div><div class="gs-l">Triangles</div><div class="gs-v">~90,600</div></div>
+          <div><div class="gs-l">Status</div><div class="gs-v">Model Complete</div></div>
+        </div>
+        <button class="g-btn">Open Full File + 3D Model</button>
+      </div>
+    </div>
+
+    <!-- IMPERIAL TIE FIGHTER -->
+    <div class="g-card g-card-full fu" onclick="openModal('tie')" style="display:grid;grid-template-columns:1fr 1fr;background:var(--bg);">
+      <div class="g-img g-img-single" style="aspect-ratio:auto;min-height:320px;">
+        <img src="assets/images/tie-fighter.png" alt="Imperial TIE Fighter reference model, front-facing render" style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+      <div class="g-body">
+        <div class="g-tag" style="display:flex;align-items:center;gap:7px"><span style="width:7px;height:7px;background:var(--red);border-radius:50%;"></span>Fictional Model &#8212; Full 3D</div>
+        <h3 class="g-name">IMPERIAL TIE FIGHTER</h3>
+        <div class="g-uni">Fictional Model &#8212; Inspired by Star Wars (Classic Trilogy)</div>
+        <p class="g-desc">A full single-piece 3D model of the classic Imperial TIE Fighter. Open the file to rotate the ~246,800-triangle hull directly in the browser.</p>
+        <div class="g-specs">
+          <div><div class="gs-l">Category</div><div class="gs-v">Fictional Aircraft Model</div></div>
+          <div><div class="gs-l">Format</div><div class="gs-v">Single-Piece STL</div></div>
+          <div><div class="gs-l">Triangles</div><div class="gs-v">~246,800</div></div>
+          <div><div class="gs-l">Status</div><div class="gs-v">Model Complete</div></div>
+        </div>
+        <button class="g-btn">Open Full File + 3D Model</button>
+      </div>
+    </div>
+
+    <!-- 1989 BATWING -->
+    <div class="g-card g-card-full fu" onclick="openModal('batwing')" style="display:grid;grid-template-columns:1fr 1fr;background:var(--bg);">
+      <div class="g-img g-img-single" style="aspect-ratio:auto;min-height:320px;">
+        <img src="assets/images/batwing.png" alt="1989 Batwing reference model, top-down render" style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+      <div class="g-body">
+        <div class="g-tag" style="display:flex;align-items:center;gap:7px"><span style="width:7px;height:7px;background:var(--red);border-radius:50%;"></span>Fictional Model &#8212; Full 3D</div>
+        <h3 class="g-name">1989 BATWING</h3>
+        <div class="g-uni">Fictional Model &#8212; Inspired by Batman (1989)</div>
+        <p class="g-desc">A full single-piece 3D model of the 1989 Batwing. Open the file to rotate the ~184,100-triangle hull directly in the browser.</p>
+        <div class="g-specs">
+          <div><div class="gs-l">Category</div><div class="gs-v">Fictional Aircraft Model</div></div>
+          <div><div class="gs-l">Format</div><div class="gs-v">Single-Piece STL</div></div>
+          <div><div class="gs-l">Triangles</div><div class="gs-v">~184,100</div></div>
+          <div><div class="gs-l">Status</div><div class="gs-v">Model Complete</div></div>
+        </div>
+        <button class="g-btn">Open Full File + 3D Model</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="about-sec" style="background:var(--bg)">
+  <div class="wrap">
+    <div class="about-grid" style="grid-template-columns:1fr;max-width:640px;margin:0 auto;">
+      <div>
+        <div class="contact-chip fu">&#9670; ABOUT THE BUILDER</div>
+        <h2 class="about-h2 fu d1">Hi, I&#8217;m<br><em>Adithya.</em></h2>
+        <p class="about-p fu d2">I have a deep fascination for aircraft and a love for sci-fi and fantasy films. Growing up watching Iron Man and Captain America, I wanted to explore what it would take to bring sci-fi aircraft to real life.</p>
+        <div class="about-sig fu d4">FLIGHT <span>FICTION</span><small>Real World Fictional Aircraft &#8212; Est. 2024</small></div>
+        <div class="contact-links fu d5">
+          <a class="contact-link" href="mailto:adithya717.v@gmail.com"><div class="cl-icon">&#9993;</div><div><div class="cl-label">Email</div><div class="cl-value">adithya717.v@gmail.com</div></div></a>
+          <a class="contact-link" href="https://www.youtube.com/@FlightXFiction" target="_blank" rel="noopener"><div class="cl-icon">&#9654;</div><div><div class="cl-label">YouTube</div><div class="cl-value">Flight Fiction</div></div></a>
+          <a class="contact-link" href="https://www.youtube.com/@MarvelUnlocked" target="_blank" rel="noopener"><div class="cl-icon">&#9654;</div><div><div class="cl-label">YouTube</div><div class="cl-value">Marvel Unlocked</div></div></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div><div class="foot-logo" onclick="goHome()">FLIGHT <span>FICTION</span></div><div class="foot-tag">Real World Fictional Aircraft &#8212; Est. 2024</div></div>
+  <nav class="foot-nav">
+    <a onclick="goHome();later('gallery-sec')">Gallery</a>
+    <a onclick="goHome();later('models-sec')">Models</a>
+    <a onclick="goHome();later('about-sec')">About</a>
+  </nav>
+  <div style="font-size:11px;color:#444">&#169; 2026 Flight Fiction &#8212; Adithya</div>
+</footer>
+</div><!-- /page-home -->
+
+
+
+<!-- CRAFT MODAL -->
+<div id="modal">
+  <div id="modal-box">
+    <button id="modal-close" onclick="closeModal()">&#10005;</button>
+    <div id="modal-media-main"></div>
+    <div id="modal-media-thumbs"></div>
+    <div id="modal-tabs">
+      <button class="modal-tab active" onclick="switchTab('overview')">Overview</button>
+      <button class="modal-tab" onclick="switchTab('specs')">Specs</button>
+      <button class="modal-tab" id="tab-3d" onclick="switchTab('model')">3D Model</button>
+    </div>
+    <div id="panel-overview" class="modal-panel active">
+      <div id="modal-tag"></div>
+      <h2 id="modal-name"></h2>
+      <div id="modal-uni"></div>
+      <p id="modal-desc"></p>
+    </div>
+    <div id="panel-specs" class="modal-panel">
+      <div id="modal-specs"></div>
+    </div>
+    <div id="panel-model" class="modal-panel" style="padding:0;">
+      <div id="stl-viewer-wrap">
+        <canvas id="stl-canvas"></canvas>
+      </div>
+      <div class="stl-controls" id="stl-controls"></div>
+    </div>
+  </div>
+</div>
+
+
+<script src="js/media.js"></script>
+<script src="js/models.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
